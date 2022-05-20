@@ -1,0 +1,30 @@
+[
+   {
+      "id": 1,
+      "name": "Lieutenant_heart",
+      "description": "Ida's favorite flower",
+      "author": "placeholder1",
+      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+   },
+   {
+      "id": 2,
+      "name": "placeholder2",
+      "description": "placeholder2",
+      "author": "placeholder2",
+      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+   },
+   {
+      "id": 3,
+      "name": "placeholder3",
+      "description": "placeholder3",
+      "author": "placeholder3",
+      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+   },
+   {
+      "id": 4,
+      "name": "placeholder4",
+      "description": "placeholder4",
+      "author": "placeholder4",
+      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+   }
+]
