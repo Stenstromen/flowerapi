@@ -2,6 +2,9 @@ const http = require("http")
 
 const port = 8080;
 const fs = require("fs");
+const { blob } = require("stream/consumers");
+const { stringify } = require("querystring");
+const fw = fs.createWriteStream("test.json")
 const db = "flowers.json"
 const readme = "readme.txt"
 
@@ -67,6 +70,8 @@ const server = http.createServer((req, res) => {
         });
     } else if (req.method === "GET" && items[1] === "api" && items[2] === "author" && items.length === 4) {
         fs.readFile(db, "utf8",(err, data) => {
+            if (err) return console.log(err);
+
             const objects = JSON.parse(data);
             const reqAu = items[3];
             const reqOb = objects.find((thing) => thing.author === reqAu);
@@ -90,11 +95,38 @@ const server = http.createServer((req, res) => {
     } else if (req.method === "GET" && items[0] === "" || req.method === "GET" && items[0] === "" && items[1] === "api" && items.length === 2) {
         res.writeHead(301, {"Location": "/api/readme"});
         res.end();
-    } else if (err) {
-        console.log(err);
-        res.statusCode = 500;
-        res.end()
-        throw err; 
+    } else if (req.method === "POST" && items[1] === "api" && items[2] === "add" && items.length === 3) {
+        console.log("Start");
+        let body = "";
+
+        req.on('data', chunk => {
+            body += chunk;
+          });
+
+          req.on('end', () => {
+            //const testfile = "test2.json"
+            let inputdata = JSON.parse(fs.readFileSync(db));
+            let post = body;
+            inputdata.push(JSON.parse(post));
+
+            // Need to reverse logic. IF-statement first, then fw.writeFile
+            fs.writeFile(db, JSON.stringify(inputdata, null, '   '), (err) =>  {
+                if (err) {
+                    console.error("Shit happens")
+                } else if (typeof JSON.parse(post).id === "string") { 
+                    console.log("ID is string!")
+                    res.statusCode = 503;
+                    res.end()
+                    parseInt(JSON.parse(post).id);
+                }
+                console.log(JSON.parse(post).id);
+            });
+            
+            //console.log(inputdata);
+
+            console.log("End");
+            res.end();
+          });
     }
 });
 

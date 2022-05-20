@@ -11,7 +11,9 @@ FlowerAPI, API for fetching beautiful flower pics <3
 ## Done
 * Add randomize logic in javascript (GET /rnd)
 * Write basic API (GET) in node.js (GET /name, /desc, /author)
+* Implement HTTP POST to add stuff
 
 ## Nice to Have
-* Implement HTTP POST to add stuff
-* ..and the same feature for Docker container
+* Input validation for HTTP POST (Schema)
+* Implement HTTP DELETE for deletion of stuff from DB
+* Implement HTTP PATCH for selective DB changes
