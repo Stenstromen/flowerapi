@@ -16,6 +16,6 @@ FlowerAPI, API for fetching beautiful flower pics <3
 
 ## Nice to Have
 * Input validation for HTTP POST (Schema)
-* Implement HTTP DELETE for deletion of stuff from DB
-* Implement HTTP PATCH for partial DB changes
-* Implement HTTP PUT for full DB change
+* Implement HTTP DELETE for deletion of stuff from DB (/api/id/{id})
+* Implement HTTP PATCH for partial DB changes (/api/id/{id})
+* Implement HTTP PUT for full DB change (/api/id/{id})

@@ -56,7 +56,14 @@ const server = http.createServer((req, res) => {
         res.end();
       }
     });
-  } else if (
+  } /*else if (req.method === "DELETE" && 
+  items[1] === "api" &&
+  items[2] === "id" &&
+  items.length === 4
+  ) {
+    fs.
+
+  }*/ else if (
     req.method === "GET" &&
     items[1] === "api" &&
     items[2] === "name" &&
