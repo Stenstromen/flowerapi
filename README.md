@@ -5,7 +5,6 @@ FlowerAPI, API for fetching beautiful flower pics <3
 ## Todo
 * Code cleanup!
 * Populate assets/img with beautiful flower pics <3 
-* Write API readme
 * Implement config.js (for hostname, port etc)
 * Create Dockerfile 
 
@@ -18,6 +17,7 @@ FlowerAPI, API for fetching beautiful flower pics <3
 * Implement HTTP DELETE for deletion of stuff from DB (/api/id/{id})
 * Implement HTTP PUT for full DB change (/api/id/{id})
 * Implement HTTP PATCH for partial DB changes (/api/id/{id})
+* Write API readme
 
 ## Nice to Have
 * Input validation for HTTP POST/PUT/PATCH (Schema)
