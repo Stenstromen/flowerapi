@@ -11,6 +11,7 @@ FlowerAPI, API for fetching beautiful flower pics <3
 ## Done
 * Add randomize logic in javascript (GET /rnd)
 * Write basic API (GET) in node.js (GET /name, /desc, /author)
+* ... Replaced with GET /api/all
 * Implement HTTP POST to add stuff
 * Implement HTTP GET for files in assets/img
 * Implement HTTP DELETE for deletion of stuff from DB (/api/id/{id})
