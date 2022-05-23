@@ -55,9 +55,20 @@ const server = http.createServer((req, res) => {
     res.setHeader("Content-Type", "application/json");
     fs.readFile(db, "utf8", (err, data) => {
       const objects = JSON.parse(data);
+      const loop = () => {
+        for (let i = 0; i < objects.length; i++) {
+            //console.log(objects[i].replace("HOSTNAME", "http://" + hostheader);
+            console.log(objects[i].toString().replace("HOSTNAME", "http://" + hostheader));
+            //console.log(objects[i])
+            JSON.stringify(objects[i]).replace("HOSTNAME", "http://" + hostheader);
+            //console.log(objects[i]);
+            //const replaced = objects[i].imageUrl.replace("HOSTNAME", "http://" + hostheader);
+            //console.log(replaced)
+        }
+      }
       res.statusCode = 200;
       res.setHeader("Content-Type", "application/json");
-      res.end(JSON.stringify(objects));
+      res.end(loop());
     });
   } else if (
     req.method === "GET" &&
@@ -74,7 +85,7 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         res.end(
-          JSON.stringify(reqOb).replace("HOSTNAME", "http://" + hostheader)
+          JSON.stringify(reqOb).replaceAll("HOSTNAME", "http://" + hostheader)
         );
       } else {
         res.statusCode = 404;
