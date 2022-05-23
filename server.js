@@ -162,6 +162,7 @@ const server = http.createServer((req, res) => {
             let inputdata = JSON.parse(fs.readFileSync(db));
             let post = body;
             inputdata.push(JSON.parse(post));
+            inputdata.sort((a, b) => (a.id > b.id) ? 1 : -1);
 
             if (typeof JSON.parse(post).id === "string") {
                 console.log(
