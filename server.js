@@ -223,17 +223,47 @@ const server = http.createServer((req, res) => {
                 inputdata.push(JSON.parse(body))
                 inputdata.sort((a, b) => (a.id > b.id) ? 1 : -1)
 
-
                 fs.writeFile(db, JSON.stringify(inputdata, null, "   "), (err) => {
                     if (err) {
                         console.error("Shit happens");
                     }
                 });
 
-
                 res.end();
             }
         });
+    } else if (
+        req.method === "PATCH" &&
+        items[1] === "api" &&
+        items[2] === "add" &&
+        items.length === 4
+    ) {
+        let body = "";
+        const post = items[3];
+        let inputdata = JSON.parse(fs.readFileSync(db));
+
+        req.on("data", (chunk) => {
+            body += chunk;
+        });
+
+        req.on("end", () => {
+
+            inputdataIndex = inputdata.findIndex((obj => obj.id == post));
+
+            if (JSON.parse(body).name) { inputdata[inputdataIndex].name = JSON.parse(body).name }
+            if (JSON.parse(body).description) { inputdata[inputdataIndex].description = JSON.parse(body).description }
+            if (JSON.parse(body).author) { inputdata[inputdataIndex].author = JSON.parse(body).author }
+            if (JSON.parse(body).imageUrl) { inputdata[inputdataIndex].imageUrl = JSON.parse(body).imageUrl }
+
+            fs.writeFile(db, JSON.stringify(inputdata, null, "   "), (err) => {
+                if (err) {
+                    console.error("Shit happens");
+                }
+            });
+
+            res.end();
+        })
+
     }
 });
 
