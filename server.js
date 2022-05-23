@@ -6,7 +6,6 @@ const readme = "assets/store/readme.txt";
 
 const server = http.createServer((req, res) => {
   const items = req.url.split("/");
-  console.log(items);
   const hostheader = req.headers.host;
 
   if (
