@@ -13,9 +13,9 @@ FlowerAPI, API for fetching beautiful flower pics <3
 * Write basic API (GET) in node.js (GET /name, /desc, /author)
 * Implement HTTP POST to add stuff
 * Implement HTTP GET for files in assets/img
+* Implement HTTP DELETE for deletion of stuff from DB (/api/id/{id})
 
 ## Nice to Have
 * Input validation for HTTP POST (Schema)
-* Implement HTTP DELETE for deletion of stuff from DB (/api/id/{id})
 * Implement HTTP PATCH for partial DB changes (/api/id/{id})
 * Implement HTTP PUT for full DB change (/api/id/{id})

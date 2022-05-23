@@ -56,14 +56,50 @@ const server = http.createServer((req, res) => {
         res.end();
       }
     });
-  } /*else if (req.method === "DELETE" && 
+  } else if (req.method === "DELETE" && 
   items[1] === "api" &&
   items[2] === "id" &&
   items.length === 4
   ) {
-    fs.
+    console.log(items[3]);
+    const post = items[3];
+    let inputdata = JSON.parse(fs.readFileSync(db));
 
-  }*/ else if (
+    if (typeof JSON.parse(post).id === "string") {
+        console.log(
+          'Field "id" cannot be type "string"' + "\n" + "Please see /api/readme"
+        );
+        res.statusCode = 400; // Bad request, https://http.cat/400
+        res.end();
+        parseInt(JSON.parse(post).id);
+    } else {
+        res.statusCode = 200; // Created, https://http.cat/201
+
+        const removeById = (id2delete, id) => {
+            const requiredIndex = id2delete.findIndex(el => {
+               return el.id === parseInt(id);
+            });
+            if(requiredIndex === -1){
+                res.statusCode = 404;
+                return false;
+            };
+            return !!inputdata.splice(requiredIndex, 1);
+         };
+
+         removeById(inputdata, post);
+
+         console.log(inputdata);
+
+        fs.writeFile(db, JSON.stringify(inputdata, null, "   "), (err) => {
+        if (err) {
+            console.error("Shit happens");
+        }
+        });
+
+        res.end();
+      }
+
+  } else if (
     req.method === "GET" &&
     items[1] === "api" &&
     items[2] === "name" &&
