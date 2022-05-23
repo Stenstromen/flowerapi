@@ -6,13 +6,14 @@ FlowerAPI, API for fetching beautiful flower pics <3
 * Code cleanup!
 * Populate assets/img with beautiful flower pics <3 
 * Implement config.js (for hostname, port etc)
+* Mimic HTTP PUT logic to HTTP POST logic
 * Create Dockerfile 
 
 ## Done
 * Add randomize logic in javascript (GET /rnd)
 * Write basic API (GET) in node.js (GET /name, /desc, /author)
-* ... Replaced with GET /api/all (WIP)
-* Implement HTTP POST to add stuff
+* ... Replaced with GET /api/all (WIP, still...)
+* Implement HTTP POST to add stuff. Added logic for server to take care of {"id": #}
 * Implement HTTP GET for files in assets/img
 * Implement HTTP DELETE for deletion of stuff from DB (/api/id/{id})
 * Implement HTTP PUT for full DB change (/api/id/{id})
