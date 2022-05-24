@@ -11,7 +11,6 @@ GET
 POST
 /api/add      - Add content using HTTP POST, in format:\
               {
-                    "id": INT,
                     "name": "NAME_STRING",
                     "description": "DESCRIPTION_STRING",
                     "author": "AUTHOR_STRING",
