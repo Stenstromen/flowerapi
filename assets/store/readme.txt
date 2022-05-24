@@ -32,7 +32,7 @@ PUT
 
 PATCH
 /api/add/{id} - Partialy change JSON Object using HTTP PATCH, in format (ex):\
-                {
+              {
                     "name": "NEW_NAME_STRING",
                     "imageUrl": "NEW_IMAGEURL_STRING"
-                }
+              }

@@ -161,7 +161,7 @@ const server = http.createServer((req, res) => {
       let inputdata = JSON.parse(fs.readFileSync(db));
       let post = body;
 
-      let getId = JSON.parse(fs.readFileSync(db)).length + 1;
+      let getId = Math.floor(Math.random() * (100 - JSON.parse(fs.readFileSync(db)).length) + 1)
       let newinputdata = JSON.parse(post);
       newinputdata.id = getId;
       inputdata.push(newinputdata);
