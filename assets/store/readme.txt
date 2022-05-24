@@ -5,7 +5,7 @@ Quickstart:
 GET
 /api/readme   - This Readme!
 /api/all      - Get entire DB in JSON
-/api/id       - Get specific JSON Object ID
+/api/id/{id}  - Get specific JSON Object ID
 /api/rnd      - Get random JSON Object
 
 POST
@@ -23,7 +23,6 @@ DELETE
 PUT 
 /api/add/{id} - Overwrite existing JSON Object using HTTP PUT, in format :\
               {
-                    "id": INT,
                     "name": "NAME_STRING",
                     "description": "DESCRIPTION_STRING",
                     "author": "AUTHOR_STRING",
