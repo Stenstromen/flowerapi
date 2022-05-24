@@ -48,7 +48,6 @@ PATCH
 * Code cleanup!
 * Populate assets/img with beautiful flower pics <3 
 * Implement config.js (for hostname, port etc)
-* Mimic HTTP PUT logic to HTTP POST logic
 * Finalize /api/all (var.replace)
 * Create Dockerfile 
 
@@ -61,6 +60,7 @@ PATCH
 * Implement HTTP DELETE for deletion of stuff from DB (/api/id/{id})
 * Implement HTTP PUT for full DB change (/api/id/{id})
 * Implement HTTP PATCH for partial DB changes (/api/id/{id})
+* Mimic HTTP PUT logic to HTTP POST logic
 * Write API readme
 
 ## Nice to Have

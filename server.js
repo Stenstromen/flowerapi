@@ -213,7 +213,9 @@ const server = http.createServer((req, res) => {
 
         removeById(inputdata, post);
 
-        inputdata.push(JSON.parse(body));
+        let newinputdata = JSON.parse(body);
+        newinputdata.id = post;
+        inputdata.push(newinputdata);
         inputdata.sort((a, b) => (a.id > b.id ? 1 : -1));
 
         fs.writeFile(db, JSON.stringify(inputdata, null, "   "), (err) => {
