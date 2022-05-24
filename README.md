@@ -45,6 +45,7 @@ PATCH
 
 ## Todo
 * Code cleanup!
+* HTTP DELETE Cleanup
 * Populate assets/img with beautiful flower pics <3 
 * Implement config.js (for hostname, port etc)
 * Finalize /api/all (var.replace)
