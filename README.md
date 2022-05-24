@@ -49,6 +49,7 @@ PATCH
 * Populate assets/img with beautiful flower pics <3 
 * Implement config.js (for hostname, port etc)
 * Mimic HTTP PUT logic to HTTP POST logic
+* Finalize /api/all (var.replace)
 * Create Dockerfile 
 
 ## Done
