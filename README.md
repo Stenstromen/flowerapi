@@ -13,6 +13,8 @@ docker run -d --rm -p 80:8080 stenstromen/flowerapi:latest
 curl http://localhost/api/readme
 ```
 
+### Roll your own
+
 Clone
 ```
 git clone https://github.com/Stenstromen/flowerapi.git
