@@ -4,6 +4,35 @@
 
 FlowerAPI, API for fetching beautiful flower pics <3
 
+## Docker
+
+Demo available at Stenstromen/flowerapi. (linux/arm64)
+
+```
+docker run -d --rm -p 80:8080 stenstromen/flowerapi:latest
+curl http://localhost/api/readme
+```
+
+Clone
+```
+git clone https://github.com/Stenstromen/flowerapi.git
+```
+
+Build
+```
+docker build -t flowerapi flowerapi/.
+```
+
+Run
+```
+docker run -d --rm -p 80:8080 flowerapi
+```
+
+Test
+```
+curl http://localhost/api/readme
+```
+
 ## Quickstart
 ```
 Quickstart:
@@ -46,7 +75,6 @@ PATCH
 ## Todo
 * Code cleanup!
 * Populate assets/img with beautiful flower pics <3 
-* Create Dockerfile 
 
 ## Done
 * Add randomize logic in javascript (GET /rnd)
@@ -61,6 +89,7 @@ PATCH
 * Write API readme
 * Finalize /api/all (var.replace)
 * HTTP DELETE Cleanup
+* Create Dockerfile 
 
 ## Nice to Have
 * Input validation for HTTP POST/PUT/PATCH (Schema)
