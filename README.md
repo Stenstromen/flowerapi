@@ -45,10 +45,7 @@ PATCH
 
 ## Todo
 * Code cleanup!
-* HTTP DELETE Cleanup
 * Populate assets/img with beautiful flower pics <3 
-* Implement config.js (for hostname, port etc)
-* Finalize /api/all (var.replace)
 * Create Dockerfile 
 
 ## Done
@@ -62,6 +59,9 @@ PATCH
 * Implement HTTP PATCH for partial DB changes (/api/id/{id})
 * Mimic HTTP PUT logic to HTTP POST logic
 * Write API readme
+* Finalize /api/all (var.replace)
+* HTTP DELETE Cleanup
 
 ## Nice to Have
 * Input validation for HTTP POST/PUT/PATCH (Schema)
+* Implement config.js (for hostname, port etc)

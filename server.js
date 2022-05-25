@@ -50,17 +50,23 @@ const server = http.createServer((req, res) => {
     items[2] === "all" &&
     items.length === 3
   ) {
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/json");
     fs.readFile(db, "utf8", (err, data) => {
-      //
-      // Big ass todo!
-      let old = JSON.stringify(data).replace("HOSTNAME", "poo");
-      let newarr = JSON.parse(old);
+      let arr = [];
+
+      for (let i = 0; i < JSON.parse(data).length; i++) {
+        arr.splice(
+          i,
+          i,
+          JSON.stringify(JSON.parse(data)[i]).replace(
+            "HOSTNAME",
+            "http://" + hostheader
+          )
+        );
+      }
 
       res.statusCode = 200;
       res.setHeader("Content-Type", "application/json");
-      res.end(newarr);
+      res.end("[" + arr.toString() + "]"); // VERY very veeeery ugly solution, but it works :/
     });
   } else if (
     req.method === "GET" &&
@@ -114,16 +120,9 @@ const server = http.createServer((req, res) => {
     const post = items[3];
     let inputdata = JSON.parse(fs.readFileSync(db));
 
-    if (typeof JSON.parse(post).id === "string") {
-      console.log(
-        'Field "id" cannot be type "string"' + "\n" + "Please see /api/readme"
-      );
-      res.statusCode = 400; // Bad request, https://http.cat/400
-      res.end();
-      parseInt(JSON.parse(post).id);
-    } else {
-      res.statusCode = 200; // Created, https://http.cat/201
+    inputdataIndex = inputdata.findIndex((obj) => obj.id == post); // -1 if not exists,
 
+    if (inputdataIndex !== -1) {
       const removeById = (id2delete, id) => {
         const requiredIndex = id2delete.findIndex((el) => {
           return el.id === parseInt(id);
@@ -143,6 +142,10 @@ const server = http.createServer((req, res) => {
         }
       });
 
+      res.statusCode = 200; // Created, https://http.cat/201
+      res.end("Item ID# " + items[3] + " Deleted");
+    } else {
+      res.statusCode = 404;
       res.end();
     }
   } else if (
@@ -161,17 +164,19 @@ const server = http.createServer((req, res) => {
       let inputdata = JSON.parse(fs.readFileSync(db));
       let post = body;
 
-      let getId = Math.floor(Math.random() * (100 - JSON.parse(fs.readFileSync(db)).length) + 1)
+      let getId = Math.floor(
+        Math.random() * (100 - JSON.parse(fs.readFileSync(db)).length) + 1
+      );
       let newinputdata = JSON.parse(post);
       newinputdata.id = getId;
       inputdata.push(newinputdata);
       inputdata.sort((a, b) => (a.id > b.id ? 1 : -1));
       res.statusCode = 201; // Created, https://http.cat/201
       fs.writeFile(db, JSON.stringify(inputdata, null, "   "), (err) => {
-                    if (err) {
-                        console.error("Shit happens");
-                    }
-                });
+        if (err) {
+          console.error("Shit happens");
+        }
+      });
       res.end();
     });
   } else if (

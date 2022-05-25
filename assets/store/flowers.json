@@ -19,5 +19,19 @@
       "description": "placeholder2",
       "author": "placeholder2",
       "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+   },
+   {
+      "id": 4,
+      "name": "placeholder2",
+      "description": "placeholder2",
+      "author": "placeholder2",
+      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+   },
+   {
+      "id": 5,
+      "name": "placeholder2",
+      "description": "placeholder2",
+      "author": "placeholder2",
+      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
    }
 ]
