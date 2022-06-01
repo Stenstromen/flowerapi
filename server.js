@@ -14,7 +14,6 @@ const server = http.createServer((req, res) => {
     items[2] === "img" &&
     items.length === 4
   ) {
-    console.log(__dirname + req.url);
     fs.readFile(__dirname + req.url, (err, data) => {
       if (err) {
         res.statusCode = 404;
@@ -30,7 +29,6 @@ const server = http.createServer((req, res) => {
     items[2] === "rnd" &&
     items.length === 3
   ) {
-    console.log(req.url);
     fs.readFile(db, "utf8", (err, data) => {
       const printdata = JSON.parse(data);
       const randomize = Math.random() * printdata.length;

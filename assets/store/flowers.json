@@ -1,37 +1,51 @@
 [
    {
       "id": 1,
-      "name": "Lieutenant_heart",
+      "name": "Lieutenant Heart",
       "description": "Ida's favorite flower",
-      "author": "placeholder1",
+      "author": "Unknown",
       "imageUrl": "HOSTNAME/assets/img/pic.jpg"
    },
    {
       "id": 2,
-      "name": "placeholder2",
-      "description": "placeholder2",
-      "author": "placeholder2",
-      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+      "name": "Tulips",
+      "description": "Pretty wild tulips",
+      "author": "Filip",
+      "imageUrl": "HOSTNAME/assets/img/tulips.jpg"
    },
    {
       "id": 3,
-      "name": "placeholder2",
-      "description": "placeholder2",
-      "author": "placeholder2",
-      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+      "name": "Tulips 2",
+      "description": "Pretty tulips",
+      "author": "Filip",
+      "imageUrl": "HOSTNAME/assets/img/tulips2.jpg"
    },
    {
       "id": 4,
-      "name": "placeholder2",
-      "description": "placeholder2",
-      "author": "placeholder2",
-      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+      "name": "Thimble Flower",
+      "description": "Thimble Flower from a store",
+      "author": "Filip",
+      "imageUrl": "HOSTNAME/assets/img/thimbleflower.jpg"
    },
    {
       "id": 5,
-      "name": "placeholder2",
-      "description": "placeholder2",
-      "author": "placeholder2",
-      "imageUrl": "HOSTNAME/assets/img/pic.jpg"
+      "name": "Japanese Maple",
+      "description": "Japanese Maple from store",
+      "author": "Filip",
+      "imageUrl": "HOSTNAME/assets/img/japanesemaple.jpg"
+   },
+   {
+      "id": 6,
+      "name": "Apple Tree Flower",
+      "description": "Apple Tree Flower",
+      "author": "Filip",
+      "imageUrl": "HOSTNAME/assets/img/appletree.jpg"
+   },
+   {
+      "id": 7,
+      "name": "Unknown",
+      "description": "Unknown Bushflower",
+      "author": "Filip",
+      "imageUrl": "HOSTNAME/assets/img/unknown.jpg"
    }
 ]
