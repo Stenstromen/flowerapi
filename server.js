@@ -177,7 +177,7 @@ const server = http.createServer((req, res) => {
           console.error("Shit happens");
         }
       });
-      res.end("ID: " + JSON.stringify(parseInt(getId)));
+      res.end(JSON.stringify(JSON.parse(newinputdata.id)));
     });
   } else if (
     req.method === "PUT" &&
