@@ -98,10 +98,10 @@ PATCH
 * Implement config.js (for hostname, port etc)
 
 ## Todo 2.0
-* Input validation with express-validator
 * Add proper API key req (jwt, jsonwebtoken)
 * Use SQLite for FlowerDB and User mgmt
 
 ## Done 2.0
 * Use node Express for API creation
 * Rewrite server to follow MVC model
+* Input validation with express-validator

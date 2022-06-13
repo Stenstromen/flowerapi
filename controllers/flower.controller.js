@@ -3,12 +3,13 @@ const printReadme = require("../models/flower.model");
 const getPic = require("../models/flower.model");
 const { validationResult } = require("express-validator");
 const fs = require("fs");
+const { resolveSoa } = require("dns");
 
 function sendPic(req, res) {
   fs.readFile("." + req.url, (err, data) => {
     if (err) {
-      res.statusCode = 404;
-      res.end(JSON.stringify(err));
+      console.log(JSON.stringify(err))
+      res.status(404).json({ error: "Not found"})
       return;
     }
     res.writeHead(200, { "Content-Type": "image/jpeg" });
@@ -44,6 +45,13 @@ function allFlowers(req, res) {
 }
 
 function oneFlower(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const extractedErrors = [];
+    errors.array().map((err) => extractedErrors.push({ [err.param]: err.msg }));
+    return res.status(400).json({ errors: extractedErrors[0].author });
+  }
+
   const hostheader = req.headers.host;
   let sql = `select * from flowers WHERE id = ${req.params.id}`;
   let params;
@@ -64,6 +72,13 @@ function oneFlower(req, res) {
 }
 
 function postFlower(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const extractedErrors = [];
+    errors.array().map((err) => extractedErrors.push({ [err.param]: err.msg }));
+    return res.status(400).json({ "errors": extractedErrors[0] });
+  }
+
   let { name, description, author, imageUrl } = req.body;
   let params;
   const insert =
@@ -86,6 +101,13 @@ function postFlower(req, res) {
 }
 
 function putFlower(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const extractedErrors = [];
+    errors.array().map((err) => extractedErrors.push({ [err.param]: err.msg }));
+    return res.status(400).json({ errors: extractedErrors[0].name });
+  }
+
   let { name, description, author, imageUrl } = req.body;
   let sql = `SELECT * FROM flowers WHERE id = ${req.params.id}`;
   let params;
@@ -113,6 +135,13 @@ function putFlower(req, res) {
 }
 
 function patchFlower(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const extractedErrors = [];
+    errors.array().map((err) => extractedErrors.push({ [err.param]: err.msg }));
+    return res.status(400).json({ errors: extractedErrors[0].name });
+  }
+
   let { name, description, author, imageUrl } = req.body;
   let sql = `SELECT * FROM flowers WHERE id = ${req.params.id}`;
   let params;
@@ -157,6 +186,13 @@ function patchFlower(req, res) {
 }
 
 function deleteFlower(req, res) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const extractedErrors = [];
+    errors.array().map((err) => extractedErrors.push({ [err.param]: err.msg }));
+    return res.status(400).json({ errors: extractedErrors[0].name });
+  }
+
   let sql = `SELECT * FROM flowers WHERE id = ${req.params.id}`;
   let params;
   flowerdb.flowerdb.all(sql, params, (err, data) => {
