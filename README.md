@@ -10,7 +10,7 @@ Demo available at Stenstromen/flowerapi. (linux/arm64)
 
 ```
 docker run -d --rm -p 80:8080 -e "SECRET_KEY=lolkey" stenstromen/flowerapi:latest
-curl http://localhost/api/readme
+curl http://localhost/readme
 ```
 
 ### Roll your own
