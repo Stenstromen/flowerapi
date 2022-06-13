@@ -8,6 +8,7 @@ const { check, param } = require("express-validator");
 flowerRouter.get("/readme", flowerController.sendReadme);
 flowerRouter.get("/assets/img/:filename", loginRequired, flowerController.sendPic);
 flowerRouter.get("/flowers", loginRequired, flowerController.allFlowers);
+flowerRouter.get("/flowers/random", loginRequired, flowerController.randomFlowers);
 flowerRouter.get(
   "/flowers/:id",
   loginRequired,

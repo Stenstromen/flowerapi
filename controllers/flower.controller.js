@@ -46,6 +46,27 @@ function allFlowers(req, res) {
   });
 }
 
+function randomFlowers(req, res) {
+  const hostheader = req.headers.host;
+  let sql = `select * from flowers`;
+  let params;
+  flowerdb.flowerdb.all(sql, params, (err, data) => {
+    if (err) {
+      res.status(400).json({ error: err.message + "lol"});
+      return;
+    }
+
+    console.log("data");
+    let resdata = data;
+    let randomize = Math.random() * resdata.length;
+    let randomobj = Math.floor(randomize);
+    let randomflowerres = resdata[randomobj];
+    randomflowerres.imageUrl = randomflowerres.imageUrl.replace("HOSTNAME", "http://" + hostheader);
+
+    res.status(200).json(randomflowerres);
+  });
+}
+
 function oneFlower(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -217,6 +238,7 @@ module.exports = {
   sendPic,
   sendReadme,
   allFlowers,
+  randomFlowers,
   oneFlower,
   postFlower,
   putFlower,

@@ -9,7 +9,6 @@ function getAll() {
         reject(error);
       }
       resolve(rows);
-      console.log(rows);
     });
   });
 }
@@ -19,12 +18,10 @@ function getOne(email) {
 
   return new Promise((resolve, reject) => {
     db.get(sql, email, (error, rows) => {
-      console.log(email);
       if (error) {
         console.error(error.message);
         reject(error);
       }
-      console.log(JSON.stringify(rows));
       resolve(rows);
     });
   });
