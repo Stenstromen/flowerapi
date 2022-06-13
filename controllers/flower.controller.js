@@ -12,14 +12,16 @@ function sendPic(req, res) {
       res.status(404).json({ error: "Not found"})
       return;
     }
+    //res.set("Content-Encoding", "gzip");
     res.writeHead(200, { "Content-Type": "image/jpeg" });
     res.end(data);
   });
 }
 
 function sendReadme(req, res) {
-  res.status(200).write(printReadme.printReadme);
-  res.end();
+  //res.status(200).write(printReadme.printReadme);
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end(printReadme.printReadme);
 }
 
 function allFlowers(req, res) {

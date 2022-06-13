@@ -1,6 +1,6 @@
 # FlowerAPI
 
-[![Flower](https://raw.githubusercontent.com/Stenstromen/stenstromen.github.io/main/public/img/flower.jpg)](https://raw.githubusercontent.com/Stenstromen/stenstromen.github.io/main/public/img/flower.jpg)
+[![Flower](https://www.stenstromen.se/public/img/flower.jpg)](https://www.stenstromen.se/public/img/flower.jpg)
 
 FlowerAPI, API for fetching beautiful flower pics <3
 
@@ -27,7 +27,7 @@ docker build -t flowerapi flowerapi/.
 
 Run
 ```
-docker run -d --rm -p 80:8080 flowerapi
+docker run -d --rm -p 80:8080 -e "SECRET_KEY=lolkey" flowerapi
 ```
 
 Test
@@ -93,15 +93,16 @@ PATCH
 * HTTP DELETE Cleanup
 * Create Dockerfile 
 
-## Nice to Have
-* Input validation for HTTP POST/PUT/PATCH (Schema)
-* Implement config.js (for hostname, port etc)
-
-## Todo 2.0
-* Add proper API key req (jwt, jsonwebtoken)
-* Use SQLite for FlowerDB and User mgmt
 
 ## Done 2.0
 * Use node Express for API creation
 * Rewrite server to follow MVC model
 * Input validation with express-validator
+* Add proper API key req (jwt, jsonwebtoken)
+* Use SQLite for FlowerDB and User mgmt
+
+## Image compression
+```
+Pictures compressed with imagemagick
+mogrify * -resize 800 *
+```

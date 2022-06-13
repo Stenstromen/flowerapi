@@ -2,18 +2,21 @@ const express = require("express");
 
 const flowerController = require("../controllers/flower.controller");
 const flowerRouter = express.Router();
+const loginRequired = require("../middlewares/auth.middleware");
 const { check, param } = require("express-validator");
 
 flowerRouter.get("/readme", flowerController.sendReadme);
-flowerRouter.get("/assets/img/:filename", flowerController.sendPic);
-flowerRouter.get("/flowers", flowerController.allFlowers);
+flowerRouter.get("/assets/img/:filename", loginRequired, flowerController.sendPic);
+flowerRouter.get("/flowers", loginRequired, flowerController.allFlowers);
 flowerRouter.get(
   "/flowers/:id",
+  loginRequired,
   [param("id", "ID has to be INT!").isInt()],
   flowerController.oneFlower
 );
 flowerRouter.post(
   "/flowers",
+  loginRequired,
   [
     check("name", "Name must be at least one char in length!").not().isEmpty(),
     check("name", "Name must be a string!").isString(),
@@ -34,6 +37,7 @@ flowerRouter.post(
 );
 flowerRouter.put(
   "/flowers/:id",
+  loginRequired,
   [
     param("id", "ID has to be INT!").isInt(),
     check("name", "Name must be at least one char in length!").not().isEmpty(),
@@ -55,6 +59,7 @@ flowerRouter.put(
 );
 flowerRouter.patch(
   "/flowers/:id",
+  loginRequired,
   [
     param("id", "ID has to be INT!").isInt(),
     check("name", "Name must be at least one char in length!")
@@ -82,6 +87,7 @@ flowerRouter.patch(
 );
 flowerRouter.delete(
   "/flowers/:id",
+  loginRequired,
   [param("id", "ID has to be INT!").isInt()],
   flowerController.deleteFlower
 );
