@@ -20,7 +20,7 @@ const flowerdb = new sqlite3.Database(sqlDbFile, (error) => {
 
   flowerdb.run(statement, (error) => {
     if (error) {
-      console.log('Table "library" already exists, continuing...');
+      console.log('Table "flowers" already exists, continuing...');
       return;
     }
 
