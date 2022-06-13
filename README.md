@@ -62,6 +62,12 @@ POST /login    -     (Request)
                      (Response)
                      "Long Bearer token"
 
+Check User DB (Requires Bearer token):
+GET /welcome   -     (Request)
+
+                     (Response)
+                     Current user DB
+
 
 Set Bearer token <authorization:"Long Bearer token"> for all the following requests.
 
