@@ -1,6 +1,6 @@
 # FlowerAPI
 
-[![Flower](https://raw.githubusercontent.com/Stenstromen/stenstromen.github.io/main/public/img/flower.jpg)](https://raw.githubusercontent.com/Stenstromen/stenstromen.github.io/main/public/img/flower.jpg)
+[![Flower](https://www.stenstromen.se/public/img/flower.jpg)](https://www.stenstromen.se/public/img/flower.jpg)
 
 FlowerAPI, API for fetching beautiful flower pics <3
 
@@ -9,7 +9,7 @@ FlowerAPI, API for fetching beautiful flower pics <3
 Demo available at Stenstromen/flowerapi. (linux/arm64)
 
 ```
-docker run -d --rm -p 80:8080 stenstromen/flowerapi:latest
+docker run -d --rm -p 80:8080 -e "SECRET_KEY=lolkey" stenstromen/flowerapi:latest
 curl http://localhost/api/readme
 ```
 
@@ -27,51 +27,85 @@ docker build -t flowerapi flowerapi/.
 
 Run
 ```
-docker run -d --rm -p 80:8080 flowerapi
+docker run -d --rm -p 80:8080 -e "SECRET_KEY=lolkey" flowerapi
 ```
 
 Test
 ```
-curl http://localhost/api/readme
+curl http://localhost/readme
 ```
 
 ## Quickstart
 ```
+Registration required!:
+
+POST /register -     (Request)
+               {
+                     "username": "STRING",
+                     "email": "STRING",
+                     "password": "STRING               
+               }
+                     (Response)
+               {
+                     "username": "STRING",
+                     "email": "STRING",
+                     "password": "STRING MD5SUM"
+               }
+
+Login:
+
+POST /login    -     (Request)
+               {
+                     "email": "STRING",
+                     "password": "STRING               
+               }
+                     (Response)
+                     "Long Bearer token"
+
+Check User DB (Requires Bearer token):
+GET /welcome   -     (Request)
+
+                     (Response)
+                     Current user DB
+
+
+Set Bearer token <authorization:"Long Bearer token"> for all the following requests.
+
 Quickstart:
 
 GET
-/api/readme   - This Readme!
-/api/all      - Get entire DB in JSON
-/api/id/{id}  - Get specific JSON Object ID
-/api/rnd      - Get random JSON Object
+/readme         - This Readme!
+/flowers        - Get entire DB in JSON
+/flowers/{id}   - Get specific JSON Object ID
+/flowers/random - Get random JSON Object
 
 POST
-/api/add      - Add content using HTTP POST, in format:\
-              {
-                    "name": "NAME_STRING",
-                    "description": "DESCRIPTION_STRING",
-                    "author": "AUTHOR_STRING",
-                    "imageUrl": "IMAGEURL_STRING"
-              }
+/flowers        - Add content using HTTP POST, in format:\
+                {
+                      "name": "NAME_STRING",
+                      "description": "DESCRIPTION_STRING",
+                      "author": "AUTHOR_STRING",
+                      "imageUrl": "IMAGEURL_STRING"
+                }
 
 DELETE
-/api/id/{id}  - Remove content using HTTP DELETE 
+/flowers/{id}   - Remove content using HTTP DELETE 
 
 PUT 
-/api/add/{id} - Overwrite existing JSON Object using HTTP PUT, in format :\
-              {
-                    "name": "NAME_STRING",
-                    "description": "DESCRIPTION_STRING",
-                    "author": "AUTHOR_STRING",
-                    "imageUrl": "IMAGEURL_STRING"
-              }
+/flowers/{id}   - Overwrite existing JSON Object using HTTP PUT, in format :\
+                {
+                      "name": "NAME_STRING",
+                      "description": "DESCRIPTION_STRING",
+                      "author": "AUTHOR_STRING",
+                      "imageUrl": "IMAGEURL_STRING"
+                }
 
 PATCH
-/api/add/{id} - Partialy change JSON Object using HTTP PATCH, in format (ex):\
-              {
-                    "name": "NEW_NAME_STRING",
-                    "imageUrl": "NEW_IMAGEURL_STRING"
-              }
+/flowers/{id}   - Partialy change JSON Object using HTTP PATCH, in format (ex):\
+                {
+                      "name": "NEW_NAME_STRING",
+                      "imageUrl": "NEW_IMAGEURL_STRING"
+                }
 ```
 
 ## Todo
@@ -93,6 +127,16 @@ PATCH
 * HTTP DELETE Cleanup
 * Create Dockerfile 
 
-## Nice to Have
-* Input validation for HTTP POST/PUT/PATCH (Schema)
-* Implement config.js (for hostname, port etc)
+
+## Done 2.0
+* Use node Express for API creation
+* Rewrite server to follow MVC model
+* Input validation with express-validator
+* Add proper API key req (jwt, jsonwebtoken)
+* Use SQLite for FlowerDB and User mgmt
+
+## Image compression
+```
+Pictures compressed with imagemagick
+mogrify * -resize 800 *
+```
